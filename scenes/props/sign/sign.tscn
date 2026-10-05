@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d1dmv5ws7bkpk"]
+
+[ext_resource type="Script" uid="uid://cxdatw3dh2udk" path="res://scenes/props/sign/sign.gd" id="1_5oi4w"]
+[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://scenes/common/pointing/pointable.gd" id="1_vkfgd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5oi4w"]
+size = Vector3(1, 1, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8ooo"]
+size = Vector3(1, 1, 0.2)
+
+[node name="Sign" type="StaticBody3D" unique_id=442314841]
+collision_mask = 0
+script = ExtResource("1_5oi4w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1639483323]
+shape = SubResource("BoxShape3D_5oi4w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1869517307]
+mesh = SubResource("BoxMesh_l8ooo")
+
+[node name="Pointable" type="Node" parent="." unique_id=257295793]
+script = ExtResource("1_vkfgd")
+metadata/_custom_type_script = "uid://bjm475akcamv8"

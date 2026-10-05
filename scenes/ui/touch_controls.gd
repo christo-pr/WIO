@@ -11,12 +11,14 @@ var _stick_finger: int = -1
 var _look_finger: int = -1
 var _mouse_stick: bool = false
 var _mouse_look: bool = false
+var _pointer: Pointer = null
 
 @onready var _margin: MarginContainer = $Margin
 @onready var _stick: Control = $Margin/Hud/Stick
 @onready var _knob: Control = $Margin/Hud/Stick/Knob
 @onready var _jump: Button = $Margin/Hud/Jump
 @onready var _sprint: Button = $Margin/Hud/Sprint
+@onready var _point: Button = $Margin/Hud/Point
 
 
 func _ready() -> void:
@@ -24,8 +26,14 @@ func _ready() -> void:
 	_jump.button_up.connect(func() -> void: Input.action_release("jump"))
 	_sprint.button_down.connect(func() -> void: Input.action_press("sprint"))
 	_sprint.button_up.connect(func() -> void: Input.action_release("sprint"))
+	_point.pressed.connect(_on_point_pressed)
 	get_viewport().size_changed.connect(_apply_safe_area)
 	_apply_safe_area()
+
+
+func _physics_process(_delta: float) -> void:
+	_pointer = player.get_node_or_null(^"Pointer") as Pointer
+	_point.visible = _pointer.is_pointing() if _pointer != null  else false
 
 
 func _apply_safe_area() -> void:
@@ -119,3 +127,8 @@ func _update_stick(global_pos: Vector2) -> void:
 func _reset_stick() -> void:
 	move_vector = Vector2.ZERO
 	_knob.position = (_stick.size - _knob.size) * 0.5
+
+
+func _on_point_pressed() -> void:
+	if _pointer != null:
+		_pointer.try_point()
