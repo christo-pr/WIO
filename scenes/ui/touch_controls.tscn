@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://b3lqqerwjm0ji"]
+
+[ext_resource type="Script" uid="uid://bpb8gt7646iv" path="res://scenes/ui/touch_controls.gd" id="1_tqecv"]
+
+[node name="TouchControls" type="CanvasLayer" unique_id=1730804467]
+script = ExtResource("1_tqecv")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1589005247]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Hud" type="Control" parent="Margin" unique_id=1824930978]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Stick" type="Control" parent="Margin/Hud" unique_id=2093466374]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+offset_right = 180.0
+grow_vertical = 0
+
+[node name="Base" type="Panel" parent="Margin/Hud/Stick" unique_id=1685043077]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Knob" type="Panel" parent="Margin/Hud/Stick" unique_id=2145131695]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 0
+offset_left = 54.0
+offset_top = 54.0
+offset_right = 129.0
+offset_bottom = 129.0
+
+[node name="Jump" type="Button" parent="Margin/Hud" unique_id=731684734]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Jump"
+
+[node name="Sprint" type="Button" parent="Margin/Hud" unique_id=2057302204]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -110.0
+offset_right = -130.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Sprint"
