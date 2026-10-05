@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dl8lxhkql7dy2"]
+
+[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://scenes/common/pointing/pointable.gd" id="1_0xykb"]
+[ext_resource type="Script" uid="uid://cnv5bd20nacr7" path="res://scenes/common/carrying/carryable.gd" id="2_7k24g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bubi"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aw5kv"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[node name="Crate" type="RigidBody3D" unique_id=607821945]
+collision_layer = 4
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1863454905]
+shape = SubResource("BoxShape3D_1bubi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=722199612]
+mesh = SubResource("BoxMesh_aw5kv")
+
+[node name="Pointable" type="Node" parent="." unique_id=1794161914]
+script = ExtResource("1_0xykb")
+label = "Pick me up"
+metadata/_custom_type_script = "uid://bjm475akcamv8"
+
+[node name="Carryable" type="Node" parent="." unique_id=739028983]
+script = ExtResource("2_7k24g")
+rest_height = 0.3
+metadata/_custom_type_script = "uid://cnv5bd20nacr7"

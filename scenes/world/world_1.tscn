@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dp13yaeyy54ec" path="res://scenes/player/player.tscn" id="1_41qrk"]
 [ext_resource type="PackedScene" uid="uid://b3lqqerwjm0ji" path="res://scenes/ui/touch_controls.tscn" id="2_d8txe"]
 [ext_resource type="PackedScene" uid="uid://d1dmv5ws7bkpk" path="res://scenes/props/sign/sign.tscn" id="3_6m2qg"]
+[ext_resource type="PackedScene" uid="uid://cpi5kk4kk8com" path="res://scenes/props/table/table.tscn" id="3_51his"]
+[ext_resource type="PackedScene" uid="uid://dl8lxhkql7dy2" path="res://scenes/props/crate/crate.tscn" id="4_q7ygm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n16fr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -55,5 +57,11 @@ touch_controls_path = NodePath("../TouchControls")
 [node name="TouchControls" parent="." unique_id=1730804467 node_paths=PackedStringArray("player") instance=ExtResource("2_d8txe")]
 player = NodePath("../Player")
 
+[node name="Table" parent="TouchControls" unique_id=2082705677 instance=ExtResource("3_51his")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8055897, 0, -4)
+
 [node name="Sign" parent="." unique_id=442314841 instance=ExtResource("3_6m2qg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+
+[node name="Crate" parent="." unique_id=607821945 instance=ExtResource("4_q7ygm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2021749, 1.3954356, -4.8208017)

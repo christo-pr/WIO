@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cpi5kk4kk8com"]
+
+[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://scenes/common/pointing/pointable.gd" id="1_xm5g2"]
+[ext_resource type="Script" uid="uid://cjwraq508nllu" path="res://scenes/common/carrying/placeable.gd" id="2_pkwl7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2kt13"]
+height = 0.9
+radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vm4op"]
+top_radius = 2.0
+bottom_radius = 1.0
+height = 0.9
+
+[node name="Table" type="StaticBody3D" unique_id=2082705677]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1356087126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46777344, 0)
+shape = SubResource("CylinderShape3D_2kt13")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=439197714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4489746, 0)
+mesh = SubResource("CylinderMesh_vm4op")
+
+[node name="Pointable" type="Node" parent="." unique_id=951783011]
+script = ExtResource("1_xm5g2")
+label = "Place"
+metadata/_custom_type_script = "uid://bjm475akcamv8"
+
+[node name="Placeable" type="Node" parent="." unique_id=608945469]
+script = ExtResource("2_pkwl7")
+metadata/_custom_type_script = "uid://cjwraq508nllu"

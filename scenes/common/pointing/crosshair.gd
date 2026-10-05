@@ -12,7 +12,14 @@ func _ready() -> void:
 	pointer.target_changed.connect(_on_target_changed)
 	_on_target_changed(pointer.target)
 
-func _on_target_changed(pointable: Pointable) -> void:
+
+func _process(_delta: float) -> void:
+	_show(pointer.prompt_target())
+
+func _on_target_changed(_pointable: Pointable) -> void:
+	_show(pointer.prompt_target())
+
+func _show(pointable: Pointable) -> void:
 	var color := idle_color if pointable == null else focus_color
 	_horizontal.color = color
 	_vertical.color = color

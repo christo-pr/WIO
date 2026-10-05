@@ -11,14 +11,16 @@ var _stick_finger: int = -1
 var _look_finger: int = -1
 var _mouse_stick: bool = false
 var _mouse_look: bool = false
-var _pointer: Pointer = null
 
+@onready var _pointer: Pointer = player.get_node_or_null(^"Pointer")
+@onready var _carrier: Carrier = player.get_node_or_null(^"Carrier")
 @onready var _margin: MarginContainer = $Margin
 @onready var _stick: Control = $Margin/Hud/Stick
 @onready var _knob: Control = $Margin/Hud/Stick/Knob
 @onready var _jump: Button = $Margin/Hud/Jump
 @onready var _sprint: Button = $Margin/Hud/Sprint
-@onready var _point: Button = $Margin/Hud/Point
+@onready var _pick: Button = $Margin/Hud/Point
+@onready var _throw: Button = $Margin/Hud/Throw
 
 
 func _ready() -> void:
@@ -26,15 +28,15 @@ func _ready() -> void:
 	_jump.button_up.connect(func() -> void: Input.action_release("jump"))
 	_sprint.button_down.connect(func() -> void: Input.action_press("sprint"))
 	_sprint.button_up.connect(func() -> void: Input.action_release("sprint"))
-	_point.pressed.connect(_on_point_pressed)
+	_pick.pressed.connect(_on_pick_pressed)
+	_throw.pressed.connect(_on_throw_pressed)
 	get_viewport().size_changed.connect(_apply_safe_area)
 	_apply_safe_area()
 
 
 func _physics_process(_delta: float) -> void:
-	_pointer = player.get_node_or_null(^"Pointer") as Pointer
-	_point.visible = _pointer.is_pointing() if _pointer != null  else false
-
+	_pick.visible = _show_picker_button()
+	_throw.visible = _carrier.is_carrying() if _carrier != null else false
 
 func _apply_safe_area() -> void:
 	var safe := DisplayServer.get_display_safe_area()
@@ -105,6 +107,10 @@ func _in_look_area(pos: Vector2) -> bool:
 		return false
 	if _sprint.get_global_rect().has_point(pos):
 		return false
+	if _pick.get_global_rect().has_point(pos):
+		return false
+	if _throw.get_global_rect().has_point(pos):
+		return false
 	return true
 
 
@@ -129,6 +135,19 @@ func _reset_stick() -> void:
 	_knob.position = (_stick.size - _knob.size) * 0.5
 
 
-func _on_point_pressed() -> void:
+func _show_picker_button() -> bool:
+	if _pointer != null:
+		return _pointer.prompt_target() != null
+	if _carrier != null and _carrier.is_carrying():
+		return true
+	return false
+
+
+func _on_pick_pressed() -> void:
 	if _pointer != null:
 		_pointer.try_point()
+
+
+func _on_throw_pressed() -> void:
+	if _carrier != null:
+		_carrier.throw_held()
