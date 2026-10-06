@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1dmv5ws7bkpk"]
 
 [ext_resource type="Script" uid="uid://cxdatw3dh2udk" path="res://scenes/props/sign/sign.gd" id="1_5oi4w"]
-[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://scenes/common/pointing/pointable.gd" id="1_vkfgd"]
+[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://common/pointing/pointable.gd" id="1_vkfgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5oi4w"]
 size = Vector3(1, 1, 0.2)

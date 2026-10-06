@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://crwmwuwxxtiqp"]
 
-[ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://scenes/common/building/buildable.gd" id="1_gr16x"]
-[ext_resource type="Script" uid="uid://cnv5bd20nacr7" path="res://scenes/common/carrying/carryable.gd" id="2_feeru"]
-[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://scenes/common/pointing/pointable.gd" id="3_f10kf"]
+[ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://common/building/buildable.gd" id="1_gr16x"]
+[ext_resource type="Script" uid="uid://cnv5bd20nacr7" path="res://common/carrying/carryable.gd" id="2_feeru"]
+[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://common/pointing/pointable.gd" id="3_f10kf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_feeru"]
 height = 1.0

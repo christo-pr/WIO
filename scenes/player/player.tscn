@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dp13yaeyy54ec"]
 
 [ext_resource type="Script" uid="uid://ddt108wvf5l18" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Script" uid="uid://kx65ohglqn1a" path="res://scenes/common/pointing/pointer.gd" id="2_gmlin"]
-[ext_resource type="Script" uid="uid://cqhi8spwxnjyl" path="res://scenes/common/pointing/crosshair.gd" id="3_lvxji"]
-[ext_resource type="Script" uid="uid://cjuq8xgsk3mt7" path="res://scenes/common/carrying/carrier.gd" id="3_p47bc"]
-[ext_resource type="Script" uid="uid://dcdfheyf6t36i" path="res://scenes/common/building/builder.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://kx65ohglqn1a" path="res://common/pointing/pointer.gd" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://cqhi8spwxnjyl" path="res://common/pointing/crosshair.gd" id="3_lvxji"]
+[ext_resource type="Script" uid="uid://cjuq8xgsk3mt7" path="res://common/carrying/carrier.gd" id="3_p47bc"]
+[ext_resource type="Script" uid="uid://dcdfheyf6t36i" path="res://common/building/builder.gd" id="4_p47bc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 radius = 0.35

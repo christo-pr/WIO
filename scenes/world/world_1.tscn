@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dl8lxhkql7dy2" path="res://scenes/props/crate/crate.tscn" id="4_q7ygm"]
 [ext_resource type="PackedScene" uid="uid://c16671kyljoxu" path="res://scenes/ui/shop/shop.tscn" id="6_nsrf1"]
 [ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="7_bkhey"]
-[ext_resource type="Resource" uid="uid://bv3603aiqs5ei" path="res://scenes/resources/shop/chair.tres" id="8_3nkna"]
-[ext_resource type="Resource" uid="uid://cq8o5yskglldn" path="res://scenes/resources/shop/lamp.tres" id="9_aa7uh"]
+[ext_resource type="Resource" uid="uid://bv3603aiqs5ei" path="res://resources/shop/chair.tres" id="8_3nkna"]
+[ext_resource type="Resource" uid="uid://cq8o5yskglldn" path="res://resources/shop/lamp.tres" id="9_aa7uh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n16fr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

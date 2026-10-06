@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dl8lxhkql7dy2"]
 
-[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://scenes/common/pointing/pointable.gd" id="1_0xykb"]
-[ext_resource type="Script" uid="uid://cnv5bd20nacr7" path="res://scenes/common/carrying/carryable.gd" id="2_7k24g"]
+[ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://common/pointing/pointable.gd" id="1_0xykb"]
+[ext_resource type="Script" uid="uid://cnv5bd20nacr7" path="res://common/carrying/carryable.gd" id="2_7k24g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bubi"]
 size = Vector3(0.6, 0.6, 0.6)
