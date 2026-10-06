@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3lqqerwjm0ji"]
 
-[ext_resource type="Script" uid="uid://bpb8gt7646iv" path="res://scenes/ui/touch_controls.gd" id="1_tqecv"]
+[ext_resource type="Script" uid="uid://bpb8gt7646iv" path="res://scenes/ui/touch_controls/touch_controls.gd" id="1_tqecv"]
 
 [node name="TouchControls" type="CanvasLayer" unique_id=1730804467]
 script = ExtResource("1_tqecv")

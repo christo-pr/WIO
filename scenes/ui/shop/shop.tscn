@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c16671kyljoxu"]
+
+[ext_resource type="Script" uid="uid://dicidwu48bvli" path="res://scenes/ui/shop/shop.gd" id="1_m7afx"]
+
+[node name="Shop" type="CanvasLayer" unique_id=2072917560]
+layer = 20
+script = ExtResource("1_m7afx")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=96098145]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Center" type="CenterContainer" parent="Margin" unique_id=1658075797]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Margin/Center" unique_id=30076564]
+custom_minimum_size = Vector2(320, 420)
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="Margin/Center/Panel" unique_id=261764622]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/Center/Panel/List" unique_id=533881448]
+layout_mode = 2
+text = "Shop"
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/Center/Panel/List" unique_id=563453135]
+custom_minimum_size = Vector2(280, 320)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Items" type="VBoxContainer" parent="Margin/Center/Panel/List/Scroll" unique_id=1850832275]
+layout_mode = 2
+theme_override_constants/separation = 8

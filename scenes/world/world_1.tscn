@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://dfusf2v6ldcwg"]
 
 [ext_resource type="PackedScene" uid="uid://dp13yaeyy54ec" path="res://scenes/player/player.tscn" id="1_41qrk"]
-[ext_resource type="PackedScene" uid="uid://b3lqqerwjm0ji" path="res://scenes/ui/touch_controls.tscn" id="2_d8txe"]
+[ext_resource type="PackedScene" uid="uid://b3lqqerwjm0ji" path="res://scenes/ui/touch_controls/touch_controls.tscn" id="2_d8txe"]
 [ext_resource type="PackedScene" uid="uid://d1dmv5ws7bkpk" path="res://scenes/props/sign/sign.tscn" id="3_6m2qg"]
 [ext_resource type="PackedScene" uid="uid://cpi5kk4kk8com" path="res://scenes/props/table/table.tscn" id="3_51his"]
 [ext_resource type="PackedScene" uid="uid://dl8lxhkql7dy2" path="res://scenes/props/crate/crate.tscn" id="4_q7ygm"]
+[ext_resource type="PackedScene" uid="uid://c16671kyljoxu" path="res://scenes/ui/shop/shop.tscn" id="6_nsrf1"]
+[ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="7_bkhey"]
+[ext_resource type="Resource" uid="uid://bv3603aiqs5ei" path="res://scenes/resources/shop/chair.tres" id="8_3nkna"]
+[ext_resource type="Resource" uid="uid://cq8o5yskglldn" path="res://scenes/resources/shop/lamp.tres" id="9_aa7uh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n16fr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -50,6 +54,12 @@ size = Vector3(1, 0.28320313, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9438924, 0.26757658, -1.5242817)
 size = Vector3(1, 0.28320313, 1)
 
+[node name="Sign" parent="." unique_id=442314841 instance=ExtResource("3_6m2qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+
+[node name="Crate" parent="." unique_id=607821945 instance=ExtResource("4_q7ygm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2021749, 1.3954356, -4.8208017)
+
 [node name="Player" parent="." unique_id=1680119484 instance=ExtResource("1_41qrk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 touch_controls_path = NodePath("../TouchControls")
@@ -60,8 +70,5 @@ player = NodePath("../Player")
 [node name="Table" parent="TouchControls" unique_id=2082705677 instance=ExtResource("3_51his")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8055897, 0, -4)
 
-[node name="Sign" parent="." unique_id=442314841 instance=ExtResource("3_6m2qg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
-
-[node name="Crate" parent="." unique_id=607821945 instance=ExtResource("4_q7ygm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2021749, 1.3954356, -4.8208017)
+[node name="Shop" parent="." unique_id=2072917560 instance=ExtResource("6_nsrf1")]
+catalog = Array[ExtResource("7_bkhey")]([ExtResource("8_3nkna"), ExtResource("9_aa7uh")])
