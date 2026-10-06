@@ -27,7 +27,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if _ghost == null:
 		return
-	if event.is_action_pressed(&"point"):
+	if event.is_action_pressed(&"point") and get_viewport().gui_get_hovered_control() == null:
+		## Trigger confirms if is point, but not hover on a button from the UI
 		confirm()
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed(&"ui_cancel") or event.is_action_pressed(&"shop"):

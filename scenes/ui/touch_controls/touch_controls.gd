@@ -15,6 +15,7 @@ var _enabled: bool = true
 
 @onready var _pointer: Pointer = player.get_node_or_null(^"Pointer")
 @onready var _carrier: Carrier = player.get_node_or_null(^"Carrier")
+@onready var _builder: Builder = player.get_node_or_null(^"Builder")
 @onready var _margin: MarginContainer = $Margin
 @onready var _stick: Control = $Margin/Hud/Stick
 @onready var _knob: Control = $Margin/Hud/Stick/Knob
@@ -23,6 +24,8 @@ var _enabled: bool = true
 @onready var _pick: Button = $Margin/Hud/Point
 @onready var _throw: Button = $Margin/Hud/Throw
 @onready var _shop: Button = $Margin/Hud/Shop
+@onready var _rotate_l: Button = $Margin/Hud/RotateL
+@onready var _rotate_r: Button = $Margin/Hud/RotateR
 
 
 func _ready() -> void:
@@ -33,6 +36,8 @@ func _ready() -> void:
 	_pick.pressed.connect(_on_pick_pressed)
 	_throw.pressed.connect(_on_throw_pressed)
 	_shop.pressed.connect(_on_shop_pressed)
+	_rotate_l.pressed.connect(_on_rotate_left_pressed)
+	_rotate_r.pressed.connect(_on_rotate_right_pressed)
 	get_viewport().size_changed.connect(_apply_safe_area)
 	_apply_safe_area()
 
@@ -40,6 +45,8 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	_pick.visible = _show_picker_button()
 	_throw.visible = _carrier.is_carrying() if _carrier != null else false
+	_rotate_l.visible = _builder.is_building()
+	_rotate_r.visible = _builder.is_building()
 
 
 func _input(event: InputEvent) -> void:
@@ -181,3 +188,11 @@ func _on_shop_pressed() -> void:
 	press.action = &"shop"
 	press.pressed = true
 	Input.parse_input_event(press)
+
+
+func _on_rotate_left_pressed() -> void:
+	_builder.rotate(-1)
+
+
+func _on_rotate_right_pressed() -> void:
+	_builder.rotate(1)

@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		return
 	if not _open:
-		if event.is_action_pressed(&"shop"):
+		if event.is_action_pressed(&"shop") and not _prompt_modal.is_open():
 			_set_open(true)
 			get_viewport().set_input_as_handled()
 		return
