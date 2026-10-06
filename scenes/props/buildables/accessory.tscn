@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://crwmwuwxxtiqp"]
+
+[ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://scenes/common/building/buildable.gd" id="1_gr16x"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_feeru"]
+height = 1.0
+radius = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f10kf"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[node name="Accessory" type="StaticBody3D" unique_id=1848799496]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=345218952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_feeru")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=417896254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_f10kf")
+
+[node name="Buildable" type="Node" parent="." unique_id=1008704866]
+script = ExtResource("1_gr16x")
+surface = 1

@@ -54,6 +54,8 @@ size = Vector3(1, 0.28320313, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9438924, 0.26757658, -1.5242817)
 size = Vector3(1, 0.28320313, 1)
 
+[node name="Built" type="Node3D" parent="." unique_id=2119480641]
+
 [node name="Sign" parent="." unique_id=442314841 instance=ExtResource("3_6m2qg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
 
@@ -63,6 +65,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2021749, 1.3954356, -4.8208
 [node name="Player" parent="." unique_id=1680119484 instance=ExtResource("1_41qrk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 touch_controls_path = NodePath("../TouchControls")
+
+[node name="Builder" parent="Player" index="5" unique_id=1063470486 node_paths=PackedStringArray("props_parent")]
+props_parent = NodePath("../../Built")
 
 [node name="TouchControls" parent="." unique_id=1730804467 node_paths=PackedStringArray("player") instance=ExtResource("2_d8txe")]
 player = NodePath("../Player")
@@ -74,3 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8055897, 0, -4)
 catalog = Array[ExtResource("7_bkhey")]([ExtResource("8_3nkna"), ExtResource("9_aa7uh")])
 player = NodePath("../Player")
 touch_controls = NodePath("../TouchControls")
+
+[connection signal="item_selected" from="Shop" to="Player/Builder" method="start"]
+
+[editable path="Player"]

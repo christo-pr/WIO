@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://bv3603aiqs5ei"]
 
 [ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="1_22drt"]
+[ext_resource type="PackedScene" uid="uid://bfq65k0dad334" path="res://scenes/props/buildables/furniture.tscn" id="1_ieqkm"]
 
 [resource]
 script = ExtResource("1_22drt")
 id = &"chair"
 display_name = "Chair"
+scene = ExtResource("1_ieqkm")
 metadata/_custom_type_script = "uid://s0g47x1qxm77"

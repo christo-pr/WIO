@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bfq65k0dad334"]
+
+[ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://scenes/common/building/buildable.gd" id="1_ki3fx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ulprx"]
+size = Vector3(0.5, 0.8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aqh4k"]
+size = Vector3(0.5, 0.8, 0.5)
+
+[node name="Furniture" type="StaticBody3D" unique_id=1587194634]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585200454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_ulprx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=314798445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_aqh4k")
+
+[node name="Buildable" type="Node" parent="." unique_id=1907199616]
+script = ExtResource("1_ki3fx")

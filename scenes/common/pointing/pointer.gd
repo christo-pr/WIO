@@ -6,6 +6,7 @@ signal target_changed(pointable: Pointable)
 @export var camera: Camera3D
 @export var player: Player
 @export var aim_range: float = 8.0
+@export var builder: Builder
 @export_flags_3d_physics var collision_mask: int = 1
 
 
@@ -19,6 +20,14 @@ var _extra_exclude: Array[RID] = []
 
 
 func _physics_process(_delta: float) -> void:
+	## Check for builder first
+	if builder != null and builder.is_building():
+		if target != null:
+			target.unfocus()
+			target = null
+			target_changed.emit(null)
+		return
+	
 	var next := _query()
 	if next == target:
 		return
@@ -39,9 +48,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func try_point() -> void:
+	## Check for building
+	if builder != null and builder.is_building():
+		builder.confirm()
+		return
+	## Then for carrying
 	var carrier := get_parent().get_node_or_null(^"Carrier") as Carrier
 	if carrier != null and carrier.handle_point(target):
 		return
+	## Otherwise just point and leave the object handle themselves
 	if is_pointing():
 		target.point()
 
