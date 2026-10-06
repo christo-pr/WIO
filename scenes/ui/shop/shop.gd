@@ -106,5 +106,4 @@ func _on_item_pressed(entry: ShopItem) -> void:
 
 
 func _on_prompt_solved(entry: ShopItem) -> void:
-	print("Item earned: ", entry.display_name)
 	item_selected.emit(entry)

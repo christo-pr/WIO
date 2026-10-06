@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfq65k0dad334"]
 
 [ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://scenes/common/building/buildable.gd" id="1_ki3fx"]
+[ext_resource type="Script" uid="uid://cjwraq508nllu" path="res://scenes/common/carrying/placeable.gd" id="2_ulprx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ulprx"]
 size = Vector3(0.5, 0.8, 0.5)
@@ -22,3 +23,6 @@ mesh = SubResource("BoxMesh_aqh4k")
 
 [node name="Buildable" type="Node" parent="." unique_id=1907199616]
 script = ExtResource("1_ki3fx")
+
+[node name="Placeable" type="Node" parent="." unique_id=1263326017]
+script = ExtResource("2_ulprx")
