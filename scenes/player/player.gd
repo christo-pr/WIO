@@ -18,6 +18,7 @@ var _jump_buffer: float = 0.0
 var _last_jump_frame: int = -1
 var _yaw: float = 0.0
 var _pitch: float = 0.0
+var _input_enabled: bool = true
 
 @onready var _camera: Camera3D = %Camera
 
@@ -29,6 +30,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not _input_enabled:
+		return
 	if DisplayServer.is_touchscreen_available():
 		return
 	if event.is_action_pressed("ui_cancel"):
@@ -44,6 +47,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not _input_enabled:
+		_jump_buffer = 0.0
+		# direction = Vector3.ZERO so they coast to a stop
+		return  # after the zeroed move, still move_and_slide
+
 	var frame := Engine.get_process_frames()
 	if Input.is_action_just_pressed("jump") and frame != _last_jump_frame:
 		_jump_buffer = jump_buffer_time
@@ -89,6 +97,10 @@ func apply_look(relative: Vector2, sensitivity: float) -> void:
 	_pitch = clampf(_pitch, deg_to_rad(-89.0), deg_to_rad(89.0))
 	rotation.y = _yaw
 	_camera.rotation.x = _pitch
+
+
+func set_input_enabled(enabled: bool) -> void:
+	_input_enabled = enabled
 
 
 ## Private methods

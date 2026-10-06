@@ -11,6 +11,7 @@ var _stick_finger: int = -1
 var _look_finger: int = -1
 var _mouse_stick: bool = false
 var _mouse_look: bool = false
+var _enabled: bool = true
 
 @onready var _pointer: Pointer = player.get_node_or_null(^"Pointer")
 @onready var _carrier: Carrier = player.get_node_or_null(^"Carrier")
@@ -21,6 +22,7 @@ var _mouse_look: bool = false
 @onready var _sprint: Button = $Margin/Hud/Sprint
 @onready var _pick: Button = $Margin/Hud/Point
 @onready var _throw: Button = $Margin/Hud/Throw
+@onready var _shop: Button = $Margin/Hud/Shop
 
 
 func _ready() -> void:
@@ -30,6 +32,7 @@ func _ready() -> void:
 	_sprint.button_up.connect(func() -> void: Input.action_release("sprint"))
 	_pick.pressed.connect(_on_pick_pressed)
 	_throw.pressed.connect(_on_throw_pressed)
+	_shop.pressed.connect(_on_shop_pressed)
 	get_viewport().size_changed.connect(_apply_safe_area)
 	_apply_safe_area()
 
@@ -38,6 +41,33 @@ func _physics_process(_delta: float) -> void:
 	_pick.visible = _show_picker_button()
 	_throw.visible = _carrier.is_carrying() if _carrier != null else false
 
+
+func _input(event: InputEvent) -> void:
+	if not _enabled:
+		return
+	if event is InputEventScreenTouch:
+		_on_screen_touch(event)
+	elif event is InputEventScreenDrag:
+		_on_screen_drag(event)
+	elif not DisplayServer.is_touchscreen_available():
+		_on_desktop_mouse(event)
+
+
+func set_enabled(enabled: bool) -> void:
+	_enabled = enabled
+	if enabled:
+		_margin.show()
+		return
+	_stick_finger = -1
+	_look_finger = -1
+	_mouse_stick = false
+	_mouse_look = false
+	_reset_stick()
+	Input.action_release("jump")
+	Input.action_release("sprint")
+	_margin.hide()
+
+
 func _apply_safe_area() -> void:
 	var safe := DisplayServer.get_display_safe_area()
 	var window := DisplayServer.window_get_size()
@@ -45,15 +75,6 @@ func _apply_safe_area() -> void:
 	_margin.add_theme_constant_override("margin_top", safe.position.y + 24)
 	_margin.add_theme_constant_override("margin_right", maxi(window.x - safe.end.x, 0) + 24)
 	_margin.add_theme_constant_override("margin_bottom", maxi(window.y - safe.end.y, 0) + 24)
-
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		_on_screen_touch(event)
-	elif event is InputEventScreenDrag:
-		_on_screen_drag(event)
-	elif not DisplayServer.is_touchscreen_available():
-		_on_desktop_mouse(event)
 
 
 func _on_screen_touch(event: InputEventScreenTouch) -> void:
@@ -111,6 +132,8 @@ func _in_look_area(pos: Vector2) -> bool:
 		return false
 	if _throw.get_global_rect().has_point(pos):
 		return false
+	if _shop.get_global_rect().has_point(pos):
+		return false
 	return true
 
 
@@ -151,3 +174,10 @@ func _on_pick_pressed() -> void:
 func _on_throw_pressed() -> void:
 	if _carrier != null:
 		_carrier.throw_held()
+
+
+func _on_shop_pressed() -> void:
+	var press := InputEventAction.new()
+	press.action = &"shop"
+	press.pressed = true
+	Input.parse_input_event(press)

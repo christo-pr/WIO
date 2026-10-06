@@ -70,5 +70,7 @@ player = NodePath("../Player")
 [node name="Table" parent="TouchControls" unique_id=2082705677 instance=ExtResource("3_51his")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8055897, 0, -4)
 
-[node name="Shop" parent="." unique_id=2072917560 instance=ExtResource("6_nsrf1")]
+[node name="Shop" parent="." unique_id=2072917560 node_paths=PackedStringArray("player", "touch_controls") instance=ExtResource("6_nsrf1")]
 catalog = Array[ExtResource("7_bkhey")]([ExtResource("8_3nkna"), ExtResource("9_aa7uh")])
+player = NodePath("../Player")
+touch_controls = NodePath("../TouchControls")

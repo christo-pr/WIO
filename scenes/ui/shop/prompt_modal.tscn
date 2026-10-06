@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bqu2mso1tnprr"]
+
+[ext_resource type="Script" uid="uid://ce5omuuo6ap71" path="res://scenes/ui/shop/prompt_modal.gd" id="1_tk6tj"]
+
+[node name="PromptModal" type="Control" unique_id=99072995]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tk6tj")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1949694118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Center" type="CenterContainer" parent="Margin" unique_id=496144780]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Margin/Center" unique_id=223489043]
+custom_minimum_size = Vector2(320, 240)
+layout_mode = 2
+
+[node name="Column" type="VBoxContainer" parent="Margin/Center/Panel" unique_id=805362768]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Prompt" type="Label" parent="Margin/Center/Panel/Column" unique_id=1283258206]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+text = "Write the name of this object"
+autowrap_mode = 3
+
+[node name="Input" type="LineEdit" parent="Margin/Center/Panel/Column" unique_id=957500092]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+placeholder_text = "Type the name"
+keep_editing_on_text_submit = true
+
+[node name="Error" type="Label" parent="Margin/Center/Panel/Column" unique_id=1432959646]
+visible = false
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9998514, 0.27382904, 0.21730354, 1)
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Margin/Center/Panel/Column" unique_id=432785415]
+layout_mode = 2
+alignment = 1
+
+[node name="Cancel" type="Button" parent="Margin/Center/Panel/Column/Buttons" unique_id=1857984482]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="Submit" type="Button" parent="Margin/Center/Panel/Column/Buttons" unique_id=1651115885]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Submit"

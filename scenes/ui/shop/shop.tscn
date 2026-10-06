@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c16671kyljoxu"]
 
 [ext_resource type="Script" uid="uid://dicidwu48bvli" path="res://scenes/ui/shop/shop.gd" id="1_m7afx"]
+[ext_resource type="PackedScene" uid="uid://bqu2mso1tnprr" path="res://scenes/ui/shop/prompt_modal.tscn" id="2_6ln8t"]
 
 [node name="Shop" type="CanvasLayer" unique_id=2072917560]
 layer = 20
@@ -25,9 +26,19 @@ layout_mode = 2
 [node name="List" type="VBoxContainer" parent="Margin/Center/Panel" unique_id=261764622]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Margin/Center/Panel/List" unique_id=533881448]
+[node name="Header" type="HBoxContainer" parent="Margin/Center/Panel/List" unique_id=374784505]
 layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/Center/Panel/List/Header" unique_id=533881448]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Shop"
+
+[node name="CloseButton" type="Button" parent="Margin/Center/Panel/List/Header" unique_id=255925824]
+custom_minimum_size = Vector2(48, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "X"
 
 [node name="Scroll" type="ScrollContainer" parent="Margin/Center/Panel/List" unique_id=563453135]
 custom_minimum_size = Vector2(280, 320)
@@ -37,3 +48,5 @@ size_flags_vertical = 3
 [node name="Items" type="VBoxContainer" parent="Margin/Center/Panel/List/Scroll" unique_id=1850832275]
 layout_mode = 2
 theme_override_constants/separation = 8
+
+[node name="PromptModal" parent="." unique_id=99072995 instance=ExtResource("2_6ln8t")]
