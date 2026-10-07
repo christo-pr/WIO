@@ -1,5 +1,7 @@
-extends CharacterBody3D
 class_name Player
+extends CharacterBody3D
+
+enum PlayerMotion { IDLE, WALK, SPRINT, JUMP, FALL }
 
 @export_group("Player settings")
 @export var touch_controls_path: NodePath
@@ -13,9 +15,15 @@ class_name Player
 @export var jump_buffer_time: float = 0.12
 @export var mouse_sensitivity: float = 0.002
 
+var motion: PlayerMotion = PlayerMotion.IDLE
+var jump_serial: int = 0
+
 var _jumps_left: int = 1
 var _jump_buffer: float = 0.0
 var _last_jump_frame: int = -1
+# Track second jump and apply animation
+var _was_airborne: bool = false
+var _jumped: bool = false
 var _yaw: float = 0.0
 var _pitch: float = 0.0
 var _input_enabled: bool = true
@@ -69,6 +77,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_velocity
 		_jumps_left -= 1
 		_jump_buffer = 0.0
+		_jumped = true
+		jump_serial += 1
 
 	if Input.is_action_just_released("jump") and velocity.y > 0.0:
 		velocity.y *= 0.5
@@ -88,6 +98,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = horizontal.x
 	velocity.z = horizontal.z
 	move_and_slide()
+	_update_player_motion()
 
 
 ## Custom methods
@@ -109,3 +120,27 @@ func _read_move() -> Vector2:
 	if controls != null and controls.move_vector.length_squared() > 0.0001:
 		return controls.move_vector
 	return Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+
+
+func _update_player_motion() -> void:
+	var airborne := not is_on_floor()
+	if airborne:
+		# +Y is up. Rising after a jump plays jump. Everything else in the air plays fall,
+		# including walking off a ledge.
+		if _jumped and velocity.y > 0.2:
+			motion = PlayerMotion.JUMP
+		else:
+			_jumped = false
+			motion = PlayerMotion.FALL
+		_was_airborne = true
+		return
+	_jumped = false
+	_was_airborne = false
+	var horiz := Vector2(velocity.x, velocity.z).length()
+	if horiz >= run_speed * 0.72:
+		motion = PlayerMotion.SPRINT
+	elif horiz >= 0.35:
+		motion = PlayerMotion.WALK
+	elif horiz <= 0.15:
+		motion = PlayerMotion.IDLE
+	# Between 0.15 and 0.35, keep the previous grounded clip so idle/walk does not flicker.
