@@ -28,6 +28,12 @@ func _show(pointable: Pointable) -> void:
 		_vertical.color = building_color
 		_prompt.text = "Place" if builder.is_valid() else "Can't place"
 		return
+	## Check for destroyable
+	if pointer.destroyable_target() != null:
+		_horizontal.color = focus_color
+		_vertical.color = focus_color
+		_prompt.text = "Destroy"
+		return
 	## Just the text on the crosshair
 	var color := idle_color if pointable == null else focus_color
 	_horizontal.color = color

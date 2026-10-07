@@ -26,6 +26,7 @@ var _enabled: bool = true
 @onready var _shop: Button = $Margin/Hud/Shop
 @onready var _rotate_l: Button = $Margin/Hud/RotateL
 @onready var _rotate_r: Button = $Margin/Hud/RotateR
+@onready var _destroy: Button = $Margin/Hud/Destroy
 
 
 func _ready() -> void:
@@ -38,6 +39,7 @@ func _ready() -> void:
 	_shop.pressed.connect(_on_shop_pressed)
 	_rotate_l.pressed.connect(_on_rotate_left_pressed)
 	_rotate_r.pressed.connect(_on_rotate_right_pressed)
+	_destroy.pressed.connect(_on_destroy_pressed)
 	get_viewport().size_changed.connect(_apply_safe_area)
 	_apply_safe_area()
 
@@ -47,6 +49,7 @@ func _physics_process(_delta: float) -> void:
 	_throw.visible = _carrier.is_carrying() if _carrier != null else false
 	_rotate_l.visible = _builder.is_building()
 	_rotate_r.visible = _builder.is_building()
+	_destroy.visible = _show_destroy_button()
 
 
 func _input(event: InputEvent) -> void:
@@ -141,6 +144,12 @@ func _in_look_area(pos: Vector2) -> bool:
 		return false
 	if _shop.get_global_rect().has_point(pos):
 		return false
+	if _rotate_l.get_global_rect().has_point(pos):
+		return false
+	if _rotate_r.get_global_rect().has_point(pos):
+		return false
+	if _destroy.get_global_rect().has_point(pos):
+		return false
 	return true
 
 
@@ -163,6 +172,16 @@ func _update_stick(global_pos: Vector2) -> void:
 func _reset_stick() -> void:
 	move_vector = Vector2.ZERO
 	_knob.position = (_stick.size - _knob.size) * 0.5
+
+
+func _show_destroy_button() -> bool:
+	if _builder != null and _builder.is_building():
+		return false
+	if _carrier != null and _carrier.is_carrying():
+		return false
+	if _pointer == null:
+		return false
+	return _pointer.destroyable_target() != null
 
 
 func _show_picker_button() -> bool:
@@ -196,3 +215,9 @@ func _on_rotate_left_pressed() -> void:
 
 func _on_rotate_right_pressed() -> void:
 	_builder.rotate(1)
+
+
+func _on_destroy_pressed() -> void:
+	if _pointer != null:
+		_pointer.try_destroy()
+	_destroy.visible = false

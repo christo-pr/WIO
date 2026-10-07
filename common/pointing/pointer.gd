@@ -40,6 +40,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"destroy"):
+		if DisplayServer.is_touchscreen_available() or Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			try_destroy()
+		return
 	if not event.is_action_pressed(&"point"):
 		return
 	if not DisplayServer.is_touchscreen_available() and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
@@ -84,6 +88,23 @@ func prompt_target() -> Pointable:
 	return null
 
 
+func destroyable_target() -> Node:
+	if builder != null and builder.is_building():
+		return null
+	var carrier := get_parent().get_node_or_null(^"Carrier") as Carrier
+	if carrier != null and carrier.is_carrying():
+		return null
+	return _find_destroyable(hit_collider)
+
+
+func try_destroy() -> void:
+	var body := destroyable_target()
+	if body == null:
+		return
+	hit_collider = null
+	body.queue_free()
+
+
 func _query() -> Pointable:
 	var space := camera.get_world_3d().direct_space_state
 	var origin := camera.global_position
@@ -111,6 +132,16 @@ func _find_pointable(body: Node) -> Pointable:
 	for child in body.get_children():
 		if child is Pointable:
 			return child as Pointable
+	return null
+
+
+func _find_destroyable(body: Node) -> Node:
+	if body == null:
+		return null
+	for child in body.get_children():
+		var buildable := child as Buildable
+		if buildable != null and buildable.surface == Buildable.Surface.WORLD_FLOOR:
+			return body
 	return null
 
 
