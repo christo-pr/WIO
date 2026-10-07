@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 			_set_open(false)
 		get_viewport().set_input_as_handled()
 		return
-	if event.is_action(&"point") or event.is_action(&"throw") or event.is_action(&"jump"):
+	if event.is_action(&"point") or event.is_action(&"throw") or event.is_action(&"jump") or event.is_action(&"destroy"):
 		get_viewport().set_input_as_handled()
 
 

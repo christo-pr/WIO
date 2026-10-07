@@ -7,6 +7,7 @@ signal target_changed(pointable: Pointable)
 @export var player: Player
 @export var aim_range: float = 8.0
 @export var builder: Builder
+@export var carrier: Carrier
 @export_flags_3d_physics var collision_mask: int = 1
 
 
@@ -57,7 +58,6 @@ func try_point() -> void:
 		builder.confirm()
 		return
 	## Then for carrying
-	var carrier := get_parent().get_node_or_null(^"Carrier") as Carrier
 	if carrier != null and carrier.handle_point(target):
 		return
 	## Otherwise just point and leave the object handle themselves
@@ -82,7 +82,6 @@ func prompt_target() -> Pointable:
 		return null
 	if not _body_has_placeable(target.get_parent()):
 		return target
-	var carrier := get_parent().get_node_or_null(^"Carrier") as Carrier
 	if carrier != null and carrier.is_carrying():
 		return target
 	return null
@@ -91,8 +90,16 @@ func prompt_target() -> Pointable:
 func destroyable_target() -> Node:
 	if builder != null and builder.is_building():
 		return null
-	var carrier := get_parent().get_node_or_null(^"Carrier") as Carrier
 	if carrier != null and carrier.is_carrying():
+		return null
+	## Since the  hit collider is set to null
+	## Then is removed, we need to check if the hit collider
+	## is actually valid or will be deleted on the next frame
+	if not is_instance_valid(hit_collider):
+		hit_collider = null
+		return null
+	if hit_collider.is_queued_for_deletion():
+		hit_collider = null
 		return null
 	return _find_destroyable(hit_collider)
 
@@ -139,8 +146,8 @@ func _find_destroyable(body: Node) -> Node:
 	if body == null:
 		return null
 	for child in body.get_children():
-		var buildable := child as Buildable
-		if buildable != null and buildable.surface == Buildable.Surface.WORLD_FLOOR:
+		var destroyable := child as Destroyable
+		if destroyable != null:
 			return body
 	return null
 

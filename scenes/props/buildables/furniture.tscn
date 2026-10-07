@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://common/building/buildable.gd" id="1_ki3fx"]
 [ext_resource type="Script" uid="uid://cjwraq508nllu" path="res://common/carrying/placeable.gd" id="2_ulprx"]
+[ext_resource type="Script" uid="uid://dcdx1qeg6ke14" path="res://common/building/destroyable.gd" id="3_aqh4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ulprx"]
 size = Vector3(0.5, 0.8, 0.5)
@@ -26,3 +27,6 @@ script = ExtResource("1_ki3fx")
 
 [node name="Placeable" type="Node" parent="." unique_id=1263326017]
 script = ExtResource("2_ulprx")
+
+[node name="Destroyable" type="Node" parent="." unique_id=605312686]
+script = ExtResource("3_aqh4k")

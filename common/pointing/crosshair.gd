@@ -32,7 +32,7 @@ func _show(pointable: Pointable) -> void:
 	if pointer.destroyable_target() != null:
 		_horizontal.color = focus_color
 		_vertical.color = focus_color
-		_prompt.text = "Destroy"
+		_prompt.text = "Destroy" if DisplayServer.is_touchscreen_available() else "Destroy (X)"
 		return
 	## Just the text on the crosshair
 	var color := idle_color if pointable == null else focus_color

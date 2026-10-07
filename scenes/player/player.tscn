@@ -39,12 +39,13 @@ fov = 70.0
 [node name="Holder" type="Marker3D" parent="Camera" unique_id=2145725528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.95)
 
-[node name="Pointer" type="Node3D" parent="." unique_id=641348568 node_paths=PackedStringArray("camera", "player", "builder")]
+[node name="Pointer" type="Node3D" parent="." unique_id=641348568 node_paths=PackedStringArray("camera", "player", "builder", "carrier")]
 script = ExtResource("2_gmlin")
 camera = NodePath("../Camera")
 player = NodePath("..")
 aim_range = 2.0
 builder = NodePath("../Builder")
+carrier = NodePath("../Carrier")
 collision_mask = 5
 
 [node name="Carrier" type="Node" parent="." unique_id=1030173547 node_paths=PackedStringArray("pointer", "player", "camera", "hold_point")]
