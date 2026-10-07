@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="4_uhyry"]
 [ext_resource type="Resource" uid="uid://bv3603aiqs5ei" path="res://resources/shop/chair.tres" id="5_lifd4"]
 [ext_resource type="Resource" uid="uid://cq8o5yskglldn" path="res://resources/shop/lamp.tres" id="6_khjoi"]
+[ext_resource type="PackedScene" uid="uid://co5b5liiqssrk" path="res://art/props/bathroomCabinet.glb" id="7_remu8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n16fr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -65,6 +66,9 @@ player = NodePath("../Player")
 catalog = Array[ExtResource("4_uhyry")]([ExtResource("5_lifd4"), ExtResource("6_khjoi")])
 player = NodePath("../Player")
 touch_controls = NodePath("../TouchControls")
+
+[node name="bathroomCabinet" parent="." unique_id=1442048426 instance=ExtResource("7_remu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.653183, 0.20000038, 2.8168616)
 
 [connection signal="item_selected" from="Shop" to="Player/Builder" method="start"]
 
