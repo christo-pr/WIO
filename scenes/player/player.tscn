@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cqhi8spwxnjyl" path="res://common/pointing/crosshair.gd" id="3_lvxji"]
 [ext_resource type="Script" uid="uid://cjuq8xgsk3mt7" path="res://common/carrying/carrier.gd" id="3_p47bc"]
 [ext_resource type="Script" uid="uid://dcdfheyf6t36i" path="res://common/building/builder.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://bcswl041swfrp" path="res://scenes/player/player-camera.gd" id="4_qek5x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 radius = 0.4
@@ -2744,15 +2745,15 @@ bones/1/name = "leg-left"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.083570965, 0.17625, -0.02875)
 bones/1/enabled = true
-bones/1/position = Vector3(0.0791, 0.221, -0.0867)
-bones/1/rotation = Quaternion(0.6087615, 0, 0, 0.7933534)
+bones/1/position = Vector3(0.083570965, 0.17625, -0.02875)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "leg-right"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083570965, 0.17625, -0.02875)
 bones/2/enabled = true
-bones/2/position = Vector3(-0.0761, 0.22, -0.009)
-bones/2/rotation = Quaternion(-0.3826835, 0, 0, 0.92387956)
+bones/2/position = Vector3(-0.083570965, 0.17625, -0.02875)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "torso"
 bones/3/parent = 0
@@ -2766,14 +2767,14 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, 0.1305262, 0.9914449)
+bones/4/rotation = Quaternion(0, 0, -0.3826835, 0.92387956)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, -0.1305262, 0.9914449)
+bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
@@ -2801,9 +2802,18 @@ playback_default_blend_time = 0.15
 
 [node name="Camera" type="Camera3D" parent="." unique_id=839294325]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.50739133)
 current = true
 fov = 70.0
+script = ExtResource("4_qek5x")
+walk_frequency = 4.0
+walk_vertical = 0.001
+walk_horizontal = 0.001
+sprint_frequency = 6.0
+sprint_vertical = 0.02
+roll_degrees = 0.05
+land_dip = 0.2
+land_min_speed = 0.3
 
 [node name="Holder" type="Marker3D" parent="Camera" unique_id=2145725528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.95)

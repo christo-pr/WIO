@@ -6,11 +6,6 @@
 [ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="4_uhyry"]
 [ext_resource type="Resource" uid="uid://bv3603aiqs5ei" path="res://resources/shop/chair.tres" id="5_lifd4"]
 [ext_resource type="Resource" uid="uid://cq8o5yskglldn" path="res://resources/shop/lamp.tres" id="6_khjoi"]
-[ext_resource type="PackedScene" uid="uid://bfq65k0dad334" path="res://scenes/props/buildables/furniture.tscn" id="7_khjoi"]
-[ext_resource type="PackedScene" uid="uid://crwmwuwxxtiqp" path="res://scenes/props/buildables/accessory.tscn" id="8_6ry6c"]
-[ext_resource type="PackedScene" uid="uid://dl8lxhkql7dy2" path="res://scenes/props/crate/crate.tscn" id="9_p1jox"]
-[ext_resource type="PackedScene" uid="uid://d1dmv5ws7bkpk" path="res://scenes/props/sign/sign.tscn" id="10_tjelr"]
-[ext_resource type="PackedScene" uid="uid://cpi5kk4kk8com" path="res://scenes/props/table/table.tscn" id="11_yhg7f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n16fr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -58,13 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 touch_controls_path = NodePath("../TouchControls")
 
 [node name="Skeleton3D" parent="Player/Visuals/character-male-a" parent_id_path=PackedInt32Array(1680119484, 294907679) index="0" unique_id=987534840]
-bones/1/position = Vector3(0.083570965, 0.17625, -0.02875)
-bones/1/rotation = Quaternion(0, 0, 0, 1)
-bones/2/position = Vector3(-0.083570965, 0.17625, -0.02875)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
-bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
-bones/6/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="Builder" parent="Player" index="5" unique_id=1063470486 node_paths=PackedStringArray("props_parent")]
 props_parent = NodePath("../../Built")
@@ -76,25 +65,6 @@ player = NodePath("../Player")
 catalog = Array[ExtResource("4_uhyry")]([ExtResource("5_lifd4"), ExtResource("6_khjoi")])
 player = NodePath("../Player")
 touch_controls = NodePath("../TouchControls")
-
-[node name="Furniture" parent="." unique_id=1587194634 instance=ExtResource("7_khjoi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018083334, 0.1999999, -3.6356297)
-
-[node name="Accessory" parent="." unique_id=1463456523 instance=ExtResource("8_6ry6c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3809772, 0.1999999, -2.1578686)
-
-[node name="Crate" parent="." unique_id=607821945 instance=ExtResource("9_p1jox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1073475, 0.4999999, -1.0816264)
-
-[node name="Sign" parent="." unique_id=442314841 instance=ExtResource("10_tjelr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.263707, 0.6999997, -4.929538)
-
-[node name="Table" parent="." unique_id=2082705677 instance=ExtResource("11_yhg7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2802277, 0.2010253, -2.7992654)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=826220237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.317779, 8.464625)
-current = true
 
 [connection signal="item_selected" from="Shop" to="Player/Builder" method="start"]
 

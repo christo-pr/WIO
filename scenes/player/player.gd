@@ -28,7 +28,7 @@ var _yaw: float = 0.0
 var _pitch: float = 0.0
 var _input_enabled: bool = true
 
-@onready var _camera: Camera3D = %Camera
+@onready var _camera: PlayerCamera = %Camera
 
 ## Lifecycle
 func _ready() -> void:
@@ -97,7 +97,14 @@ func _physics_process(delta: float) -> void:
 	horizontal = horizontal.move_toward(direction * speed, accel * delta)
 	velocity.x = horizontal.x
 	velocity.z = horizontal.z
+	
+	## Get the impact on the frame before moving
+	var impact_y := velocity.y
 	move_and_slide()
+	## Then if is on floor on this frame but by falling
+	## Meaning it lands kick
+	if is_on_floor() and _was_airborne:
+		_camera.add_land_kick(impact_y)
 	_update_player_motion()
 
 
