@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dfusf2v6ldcwg"]
 
 [ext_resource type="PackedScene" uid="uid://dp13yaeyy54ec" path="res://scenes/player/player.tscn" id="1_a0k6d"]
+[ext_resource type="PackedScene" uid="uid://gutletho8pvw" path="res://scenes/levels/level_1.tscn" id="1_remu8"]
 [ext_resource type="PackedScene" uid="uid://b3lqqerwjm0ji" path="res://scenes/ui/touch_controls/touch_controls.tscn" id="2_remu8"]
 [ext_resource type="PackedScene" uid="uid://c16671kyljoxu" path="res://scenes/ui/shop/shop.tscn" id="3_pwgtm"]
 [ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="4_uhyry"]
@@ -20,12 +21,6 @@ sky = SubResource("Sky_41qrk")
 ambient_light_source = 3
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nsrf1"]
-size = Vector3(50, 0.2, 50)
-
-[sub_resource type="BoxMesh" id="BoxMesh_odp70"]
-size = Vector3(50, 0.2, 50)
-
 [node name="World" type="Node3D" unique_id=717797635]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1185495919]
@@ -35,16 +30,9 @@ environment = SubResource("Environment_d8txe")
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=737311518]
-collision_mask = 0
+[node name="Level" type="Node3D" parent="." unique_id=1773702088]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=487161101]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_nsrf1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=282496061]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-mesh = SubResource("BoxMesh_odp70")
+[node name="Level01" parent="Level" unique_id=1666841619 instance=ExtResource("1_remu8")]
 
 [node name="Built" type="Node3D" parent="." unique_id=2119480641]
 
