@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://bcswl041swfrp" path="res://scenes/player/player-camera.gd" id="4_qek5x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
-radius = 0.4
-height = 1.0
+radius = 0.6
+height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhugs"]
 resource_name = "colormap"
@@ -2722,7 +2722,7 @@ script = ExtResource("1_8afob")
 max_jumps = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1147102569]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_x7p2l")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=2120410637 node_paths=PackedStringArray("_player", "_animation_player")]
