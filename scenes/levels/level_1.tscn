@@ -15,6 +15,9 @@ texture_filter = 0
 [sub_resource type="BoxMesh" id="BoxMesh_odp70"]
 size = Vector3(25, 0.2, 25)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsrm0"]
+albedo_color = Color(0.7019608, 0.7019608, 0.7019608, 1)
+
 [node name="Level01" type="StaticBody3D" unique_id=1666841619]
 collision_mask = 0
 
@@ -29,25 +32,52 @@ material_override = SubResource("StandardMaterial3D_6iamk")
 mesh = SubResource("BoxMesh_odp70")
 metadata/_edit_lock_ = true
 
-[node name="Walls" type="Node3D" parent="." unique_id=1043196335]
+[node name="House" type="Node3D" parent="." unique_id=1043196335]
 metadata/_edit_lock_ = true
 
-[node name="Wall" parent="Walls" unique_id=1718818374 instance=ExtResource("2_6iamk")]
+[node name="Outer" parent="House" unique_id=1718818374 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
 stretch = Vector3(24, 3, 1)
 metadata/_edit_lock_ = true
 
-[node name="Wall3" parent="Walls" unique_id=966705309 instance=ExtResource("2_6iamk")]
+[node name="Outer2" parent="House" unique_id=966705309 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, 12)
 stretch = Vector3(24, 3, 1)
 metadata/_edit_lock_ = true
 
-[node name="Wall2" parent="Walls" unique_id=299436808 instance=ExtResource("2_6iamk")]
+[node name="Outer3" parent="House" unique_id=299436808 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 12, 0, -12)
 stretch = Vector3(24, 3, 1)
 metadata/_edit_lock_ = true
 
-[node name="Wall4" parent="Walls" unique_id=1952063876 instance=ExtResource("2_6iamk")]
+[node name="Outer4" parent="House" unique_id=1952063876 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1.9470718e-07, 0, -1, 0, 1, 0, 1, 0, 1.9470718e-07, -12, 0, -12)
 stretch = Vector3(24, 3, 1)
 metadata/_edit_lock_ = true
+
+[node name="Room" type="Node3D" parent="House" unique_id=691305642]
+metadata/_edit_lock_ = true
+
+[node name="Wall" parent="House/Room" unique_id=1959573179 instance=ExtResource("2_6iamk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+override_materials = Array[StandardMaterial3D]([null, SubResource("StandardMaterial3D_nsrm0")])
+stretch = Vector3(10, 3, 1)
+
+[node name="Wall2" parent="House/Room" unique_id=605265041 instance=ExtResource("2_6iamk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8457327, 0, -12)
+override_materials = Array[StandardMaterial3D]([null, SubResource("StandardMaterial3D_nsrm0")])
+stretch = Vector3(10, 3, 1)
+
+[node name="Room2" type="Node3D" parent="House" unique_id=1241852836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Wall" parent="House/Room2" unique_id=1091788878 instance=ExtResource("2_6iamk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+override_materials = Array[StandardMaterial3D]([null, SubResource("StandardMaterial3D_nsrm0")])
+stretch = Vector3(10, 3, 1)
+
+[node name="Wall2" parent="House/Room2" unique_id=1945123428 instance=ExtResource("2_6iamk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12, 0, -12)
+override_materials = Array[StandardMaterial3D]([null, SubResource("StandardMaterial3D_nsrm0")])
+stretch = Vector3(10, 3, 1)

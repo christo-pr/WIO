@@ -5,19 +5,22 @@ extends StaticBody3D
 const BASE_SHAPE_SIZE := Vector3(1, 1.29, 0.05)
 const BASE_SHAPE_POSITION := Vector3(0.5, 0.645, -0.02)
 
-@export var color_wall: Color = Color(0.7, 0.7, 0.7):
+@export var override_materials: Array[StandardMaterial3D]:
 	set(value):
-		color_wall = value
-		_apply_color()
+		override_materials = value
+		_apply_material()
+
 
 @export var stretch := Vector3.ONE:
 	set(value):
 		stretch = value.max(Vector3(0.01, 0.01, 0.01))
 		_apply_stretch()
 
+
 func _ready() -> void:
 	_apply_stretch()
-	_apply_color()
+	_apply_material()
+
 
 func _apply_stretch() -> void:
 	if not is_inside_tree():
@@ -33,10 +36,14 @@ func _apply_stretch() -> void:
 	collision.scale = Vector3.ONE
 	collision.position = BASE_SHAPE_POSITION * stretch
 
-func _apply_color() -> void:
+
+func _apply_material() -> void:
 	var mesh_node := get_node_or_null("Mesh") as MeshInstance3D
 	if mesh_node == null:
 		return
-	var material := mesh_node.get_surface_override_material(2)
-	if material is StandardMaterial3D:
-		material.albedo_color = color_wall
+	var count := mini(mesh_node.get_surface_override_material_count(), override_materials.size())
+	for i in count:
+		var material := override_materials[i]
+		if material == null:
+			continue
+		mesh_node.set_surface_override_material(i, material)
