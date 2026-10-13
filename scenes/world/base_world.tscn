@@ -10,6 +10,10 @@
 [ext_resource type="Resource" uid="uid://ka3nllx72t6n" path="res://resources/shop/books.tres" id="8_pwgtm"]
 [ext_resource type="Resource" uid="uid://huje0cwerfy0" path="res://resources/shop/bathub.tres" id="9_uhyry"]
 [ext_resource type="Resource" uid="uid://bjd414d0hpqhg" path="res://resources/shop/bathroom_cabinet.tres" id="10_lifd4"]
+[ext_resource type="Resource" uid="uid://dpmctyr0pe6fh" path="res://resources/shop/bathroom_sink.tres" id="11_khjoi"]
+[ext_resource type="Resource" uid="uid://cvryulkf4lj2k" path="res://resources/shop/bed_bunk.tres" id="12_6ry6c"]
+[ext_resource type="Resource" uid="uid://k156ftmufbnt" path="res://resources/shop/bed_double.tres" id="13_p1jox"]
+[ext_resource type="Resource" uid="uid://dqktnempinecp" path="res://resources/shop/bed_single.tres" id="14_tjelr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n16fr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -53,7 +57,7 @@ props_parent = NodePath("../../Built")
 player = NodePath("../Player")
 
 [node name="Shop" parent="." unique_id=2072917560 node_paths=PackedStringArray("player", "touch_controls") instance=ExtResource("3_pwgtm")]
-catalog = Array[ExtResource("4_uhyry")]([ExtResource("5_lifd4"), ExtResource("6_khjoi"), ExtResource("8_pwgtm"), ExtResource("9_uhyry"), ExtResource("10_lifd4")])
+catalog = Array[ExtResource("4_uhyry")]([ExtResource("5_lifd4"), ExtResource("6_khjoi"), ExtResource("8_pwgtm"), ExtResource("9_uhyry"), ExtResource("10_lifd4"), ExtResource("11_khjoi"), ExtResource("12_6ry6c"), ExtResource("13_p1jox"), ExtResource("14_tjelr")])
 player = NodePath("../Player")
 touch_controls = NodePath("../TouchControls")
 

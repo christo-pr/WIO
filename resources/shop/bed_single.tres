@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://dqktnempinecp"]
+
+[ext_resource type="PackedScene" uid="uid://bugy511vtodqf" path="res://scenes/props/buildables/furniture/bed_single.tscn" id="1_7mc31"]
+[ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="1_h2bo5"]
+
+[resource]
+script = ExtResource("1_h2bo5")
+id = &"bedSingle"
+display_name = "Bed Single"
+scene = ExtResource("1_7mc31")
+metadata/_custom_type_script = "uid://s0g47x1qxm77"

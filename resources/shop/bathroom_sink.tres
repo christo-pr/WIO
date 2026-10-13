@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://dpmctyr0pe6fh"]
+
+[ext_resource type="PackedScene" uid="uid://cguok5ah2occs" path="res://scenes/props/buildables/furniture/bathroom_sink.tscn" id="1_4anr3"]
+[ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="1_8y1bl"]
+
+[resource]
+script = ExtResource("1_8y1bl")
+id = &"bathroomSink"
+display_name = "Bathroom Sink"
+scene = ExtResource("1_4anr3")
+metadata/_custom_type_script = "uid://s0g47x1qxm77"

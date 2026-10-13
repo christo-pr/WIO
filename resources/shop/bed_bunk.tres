@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://cvryulkf4lj2k"]
+
+[ext_resource type="PackedScene" uid="uid://tfibj3uqun0n" path="res://scenes/props/buildables/furniture/bed_bunk.tscn" id="1_5veot"]
+[ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="2_w0swr"]
+
+[resource]
+script = ExtResource("2_w0swr")
+id = &"bedBunk"
+display_name = "Bed Bunk"
+scene = ExtResource("1_5veot")
+metadata/_custom_type_script = "uid://s0g47x1qxm77"
