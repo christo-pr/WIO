@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://bjd414d0hpqhg"]
+
+[ext_resource type="PackedScene" uid="uid://dk16bn2e4pc1i" path="res://scenes/props/interactables/bathroom_cabinet/batroom_cabinet.tscn" id="1_rqoid"]
+[ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="1_w6adu"]
+
+[resource]
+script = ExtResource("1_w6adu")
+id = &"cabinet"
+display_name = "Cabinet"
+scene = ExtResource("1_rqoid")
+metadata/_custom_type_script = "uid://s0g47x1qxm77"
