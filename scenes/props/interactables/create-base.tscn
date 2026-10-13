@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://dl8lxhkql7dy2"]
 
 [ext_resource type="Script" uid="uid://bjm475akcamv8" path="res://common/pointing/pointable.gd" id="1_68lru"]
+[ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://common/building/buildable.gd" id="2_v52c2"]
 
 [node name="Crate" type="RigidBody3D" unique_id=607821945]
 collision_layer = 4
 continuous_cd = true
+
+[node name="Buildable" type="Node" parent="." unique_id=2054531725]
+script = ExtResource("2_v52c2")
+metadata/_custom_type_script = "uid://fx6sk1bbkypc"
 
 [node name="Pointable" type="Node" parent="." unique_id=1794161914]
 script = ExtResource("1_68lru")

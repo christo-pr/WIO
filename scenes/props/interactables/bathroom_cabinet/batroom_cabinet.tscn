@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dl8lxhkql7dy2" path="res://scenes/props/interactables/create-base.tscn" id="1_65p1d"]
 [ext_resource type="Script" uid="uid://drqr41lqwf85l" path="res://scenes/props/interactables/bathroom_cabinet/batroom_cabinet.gd" id="2_e034r"]
-[ext_resource type="Script" uid="uid://fx6sk1bbkypc" path="res://common/building/buildable.gd" id="3_e034r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yoqj"]
 resource_name = "wood"
@@ -127,21 +126,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3bgx0")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ticfs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e034r"]
 size = Vector3(0.23, 0.39000002, 0.13)
 
 [node name="BatroomCabinet" unique_id=607821945 instance=ExtResource("1_65p1d")]
 script = ExtResource("2_e034r")
 
-[node name="Pointable" parent="." index="0" unique_id=1794161914]
+[node name="Pointable" parent="." index="1" unique_id=1794161914]
 label = "Open"
 
-[node name="Buildable" type="Node" parent="." index="1" unique_id=377757487]
-script = ExtResource("3_e034r")
-metadata/_custom_type_script = "uid://fx6sk1bbkypc"
-
 [node name="Mesh" type="MeshInstance3D" parent="." index="2" unique_id=1211173046]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31, 0, 0)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.8, 0, 0)
 gi_mode = 0
 mesh = SubResource("ArrayMesh_vja8c")
 
@@ -150,8 +145,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22684418, 0.026844183, -0.0
 gi_mode = 0
 mesh = SubResource("ArrayMesh_4r3db")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3" unique_id=837695837]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004999995, 0.19500001, -0.145)
-shape = SubResource("BoxShape3D_ticfs")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3" unique_id=1196196834]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.012499988, 0.4875, -0.36249998)
+shape = SubResource("BoxShape3D_e034r")
 
 [connection signal="pointed" from="Pointable" to="." method="_on_pointable_pointed"]
