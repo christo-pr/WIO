@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://ka3nllx72t6n"]
 
 [ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="1_aq7vo"]
-[ext_resource type="PackedScene" uid="uid://rl2voi5j77q5" path="res://scenes/props/buildables/books.tscn" id="1_nif7v"]
+[ext_resource type="PackedScene" uid="uid://rl2voi5j77q5" path="res://scenes/props/buildables/accesories/books.tscn" id="1_nif7v"]
 
 [resource]
 script = ExtResource("1_aq7vo")

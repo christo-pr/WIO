@@ -4,23 +4,9 @@
 [ext_resource type="Script" uid="uid://cjwraq508nllu" path="res://common/carrying/placeable.gd" id="2_ulprx"]
 [ext_resource type="Script" uid="uid://dcdx1qeg6ke14" path="res://common/building/destroyable.gd" id="3_aqh4k"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ulprx"]
-size = Vector3(0.5, 0.8, 0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_aqh4k"]
-size = Vector3(0.5, 0.8, 0.5)
-
 [node name="Furniture" type="StaticBody3D" unique_id=1587194634]
 collision_layer = 4
 collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585200454]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-shape = SubResource("BoxShape3D_ulprx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=314798445]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-mesh = SubResource("BoxMesh_aqh4k")
 
 [node name="Buildable" type="Node" parent="." unique_id=1907199616]
 script = ExtResource("1_ki3fx")
