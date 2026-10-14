@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ihbbfe5g2ypq"]
+
+[ext_resource type="Texture2D" uid="uid://dfphiqkq8nunc" path="res://art/textures/Walls/Backrooms_Wallpaper_01_Roughness.jpg" id="1_7pn82"]
+
+[resource]
+albedo_texture = ExtResource("1_7pn82")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

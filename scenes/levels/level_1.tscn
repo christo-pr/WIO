@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://gutletho8pvw"]
 
-[ext_resource type="Texture2D" uid="uid://ceq3da7gp3uek" path="res://art/textures/checker.png" id="1_ksju7"]
+[ext_resource type="Texture2D" uid="uid://dcq0bbyb2vqts" path="res://art/textures/Floors/Backrooms_Carpet_01_Color.jpg" id="1_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://b3e3l7s0ehbqs" path="res://scenes/props/wall/wall.tscn" id="2_6iamk"]
-[ext_resource type="Texture2D" uid="uid://cnp7yjx1r67im" path="res://art/textures/planks.png" id="2_x42e6"]
+[ext_resource type="Texture2D" uid="uid://ntnh3pvcdfa7" path="res://art/textures/Ceilings/Backrooms_Ceiling_01_Color.jpg" id="2_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://ifvjmweimu44" path="res://scenes/props/wall/wall_window.tscn" id="3_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://ddbrnc5xq14ut" path="res://art/props/lampWall.glb" id="4_6761a"]
+[ext_resource type="Material" uid="uid://pbtle10pfxwx" path="res://materials/wall_room1_material.tres" id="4_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://b7ntjny2foiuu" path="res://art/props/lampSquareCeiling.glb" id="5_sk5k4"]
+[ext_resource type="Material" uid="uid://ihbbfe5g2ypq" path="res://materials/wall_grey_material.tres" id="8_s8va5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nsrf1"]
-size = Vector3(25, 0.2, 25)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6iamk"]
-albedo_texture = ExtResource("1_ksju7")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dga24"]
+albedo_texture = ExtResource("1_oc4kc")
 uv1_scale = Vector3(25, 25, 25)
 uv1_world_triplanar = true
 texture_filter = 0
@@ -19,11 +18,14 @@ texture_filter = 0
 [sub_resource type="BoxMesh" id="BoxMesh_odp70"]
 size = Vector3(25, 0.2, 25)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsrf1"]
+size = Vector3(25, 0.2, 25)
+
 [sub_resource type="BoxMesh" id="BoxMesh_6761a"]
 size = Vector3(24, 0.2, 24)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sk5k4"]
-albedo_texture = ExtResource("2_x42e6")
+albedo_texture = ExtResource("2_oc4kc")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -32,21 +34,18 @@ texture_filter = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_oc4kc"]
 size = Vector3(24, 0.2, 24)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsrm0"]
-albedo_color = Color(0.7019608, 0.7019608, 0.7019608, 1)
-
 [node name="Level01" type="StaticBody3D" unique_id=1666841619]
 collision_mask = 0
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1596432039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 0.100019075, -0.024488032)
+material_override = SubResource("StandardMaterial3D_dga24")
+mesh = SubResource("BoxMesh_odp70")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1225134107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_nsrf1")
-metadata/_edit_lock_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1596432039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 0.100019075, -0.024488032)
-material_override = SubResource("StandardMaterial3D_6iamk")
-mesh = SubResource("BoxMesh_odp70")
 metadata/_edit_lock_ = true
 
 [node name="House" type="Node3D" parent="." unique_id=1043196335]
@@ -67,23 +66,23 @@ shape = SubResource("BoxShape3D_oc4kc")
 
 [node name="Outer" parent="House" unique_id=1718818374 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
+override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
-metadata/_edit_lock_ = true
 
 [node name="Outer2" parent="House" unique_id=966705309 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, 12)
+override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
-metadata/_edit_lock_ = true
 
 [node name="Outer3" parent="House" unique_id=299436808 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 12, 0, -12)
+override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
-metadata/_edit_lock_ = true
 
 [node name="Outer4" parent="House" unique_id=1952063876 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1.9470718e-07, 0, -1, 0, 1, 0, 1, 0, 1.9470718e-07, -12, 0, -12)
+override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
-metadata/_edit_lock_ = true
 
 [node name="Lights" type="Node3D" parent="House" unique_id=465538500]
 metadata/_edit_lock_ = true
@@ -159,15 +158,22 @@ metadata/_edit_lock_ = true
 
 [node name="WallWindow" parent="House/Room" unique_id=1139467325 instance=ExtResource("3_nsrm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+override_materials = Array[StandardMaterial3D]([null, ExtResource("8_s8va5"), ExtResource("8_s8va5")])
 stretch = Vector3(5, 3, 1)
 
 [node name="Wall" parent="House/Room" unique_id=762693870 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+override_materials = Array[StandardMaterial3D]([null, ExtResource("8_s8va5"), ExtResource("8_s8va5")])
 stretch = Vector3(5, 3, 1)
+
+[node name="Wall4" parent="House/Room" unique_id=1799024250 instance=ExtResource("2_6iamk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 0, -9)
+override_materials = Array[StandardMaterial3D]([null, ExtResource("8_s8va5"), ExtResource("8_s8va5")])
+stretch = Vector3(8, 3, 1)
 
 [node name="Wall2" parent="House/Room" unique_id=605265041 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8457327, 0, -12)
-override_materials = Array[StandardMaterial3D]([null, SubResource("StandardMaterial3D_nsrm0")])
+override_materials = Array[StandardMaterial3D]([null, ExtResource("8_s8va5"), ExtResource("8_s8va5")])
 stretch = Vector3(10, 3, 1)
 
 [node name="Room2" type="Node3D" parent="House" unique_id=1241852836]
@@ -176,10 +182,15 @@ metadata/_edit_lock_ = true
 
 [node name="Wall" parent="House/Room2" unique_id=1091788878 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-override_materials = Array[StandardMaterial3D]([null, SubResource("StandardMaterial3D_nsrm0")])
+override_materials = Array[StandardMaterial3D]([null, ExtResource("8_s8va5"), ExtResource("8_s8va5")])
 stretch = Vector3(10, 3, 1)
+
+[node name="Wall3" parent="House/Room2" unique_id=2067011825 instance=ExtResource("2_6iamk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -9)
+override_materials = Array[StandardMaterial3D]([null, ExtResource("8_s8va5"), ExtResource("8_s8va5")])
+stretch = Vector3(8, 3, 1)
 
 [node name="Wall2" parent="House/Room2" unique_id=1945123428 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12, 0, -12)
-override_materials = Array[StandardMaterial3D]([null, SubResource("StandardMaterial3D_nsrm0")])
+override_materials = Array[StandardMaterial3D]([null, ExtResource("8_s8va5"), ExtResource("8_s8va5")])
 stretch = Vector3(10, 3, 1)
