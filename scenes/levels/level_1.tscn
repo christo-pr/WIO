@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b3e3l7s0ehbqs" path="res://scenes/props/wall/wall.tscn" id="2_6iamk"]
 [ext_resource type="Texture2D" uid="uid://cnp7yjx1r67im" path="res://art/textures/planks.png" id="2_x42e6"]
 [ext_resource type="PackedScene" uid="uid://ifvjmweimu44" path="res://scenes/props/wall/wall_window.tscn" id="3_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://ddbrnc5xq14ut" path="res://art/props/lampWall.glb" id="4_6761a"]
+[ext_resource type="PackedScene" uid="uid://b7ntjny2foiuu" path="res://art/props/lampSquareCeiling.glb" id="5_sk5k4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nsrf1"]
 size = Vector3(25, 0.2, 25)
@@ -51,7 +53,6 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Roof" type="StaticBody3D" parent="House" unique_id=478206662]
-visible = false
 collision_mask = 0
 metadata/_edit_lock_ = true
 
@@ -84,12 +85,85 @@ transform = Transform3D(1.9470718e-07, 0, -1, 0, 1, 0, 1, 0, 1.9470718e-07, -12,
 stretch = Vector3(24, 3, 1)
 metadata/_edit_lock_ = true
 
+[node name="Lights" type="Node3D" parent="House" unique_id=465538500]
+metadata/_edit_lock_ = true
+
+[node name="lampWall" parent="House/Lights" unique_id=533199082 instance=ExtResource("4_6761a")]
+transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9726033, -11.840205)
+
+[node name="Light" type="OmniLight3D" parent="House/Lights/lampWall" unique_id=1600503865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+light_color = Color(1, 0.96862745, 0.92156863, 1)
+light_bake_mode = 1
+omni_range = 12.0
+omni_attenuation = 0.4
+
+[node name="lampWall2" parent="House/Lights" unique_id=1622418545 instance=ExtResource("4_6761a")]
+transform = Transform3D(-1.09278474e-07, 0, 1, 0, 1, 0, -2.5, 0, -4.371139e-08, -11.82, 2.973, 7.055)
+
+[node name="Light" type="OmniLight3D" parent="House/Lights/lampWall2" unique_id=1874728705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+light_color = Color(1, 0.96862745, 0.92156863, 1)
+light_bake_mode = 1
+omni_range = 12.0
+omni_attenuation = 0.4
+
+[node name="lampWall3" parent="House/Lights" unique_id=2109174075 instance=ExtResource("4_6761a")]
+transform = Transform3D(1.1920929e-07, 0, -1, 0, 1, 0, 2.5, 0, 2.9802322e-08, 11.82, 2.973, 7.055)
+
+[node name="Light" type="OmniLight3D" parent="House/Lights/lampWall3" unique_id=968843418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+light_color = Color(1, 0.96862745, 0.92156863, 1)
+light_bake_mode = 1
+omni_range = 12.0
+omni_attenuation = 0.4
+
+[node name="lampCeiling" parent="House/Lights" unique_id=222959228 instance=ExtResource("5_sk5k4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 3.6698985, -6.4196434)
+
+[node name="Light" type="OmniLight3D" parent="House/Lights/lampCeiling" unique_id=1652822248]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.049799442, -0.04969883)
+light_color = Color(1, 0.96862745, 0.92156863, 1)
+light_energy = 1.4
+light_size = 0.05
+light_bake_mode = 1
+omni_range = 10.0
+omni_attenuation = 0.4
+
+[node name="lampCeiling2" parent="House/Lights" unique_id=462550133 instance=ExtResource("5_sk5k4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 3.67, -6.42)
+
+[node name="Light" type="OmniLight3D" parent="House/Lights/lampCeiling2" unique_id=1885448374]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.049799442, -0.04969883)
+light_color = Color(1, 0.96862745, 0.92156863, 1)
+light_energy = 1.4
+light_size = 0.05
+light_bake_mode = 1
+omni_range = 10.0
+omni_attenuation = 0.4
+
+[node name="lampCeiling3" parent="House/Lights" unique_id=511377356 instance=ExtResource("5_sk5k4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999981, 3.67, 5.58)
+
+[node name="Light" type="OmniLight3D" parent="House/Lights/lampCeiling3" unique_id=840478606]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.049799442, -0.04969883)
+light_color = Color(1, 0.96862745, 0.92156863, 1)
+light_energy = 1.4
+light_size = 0.05
+light_bake_mode = 1
+omni_range = 15.0
+omni_attenuation = 0.4
+
 [node name="Room" type="Node3D" parent="House" unique_id=691305642]
 metadata/_edit_lock_ = true
 
 [node name="WallWindow" parent="House/Room" unique_id=1139467325 instance=ExtResource("3_nsrm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+stretch = Vector3(5, 3, 1)
+
+[node name="Wall" parent="House/Room" unique_id=762693870 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-stretch = Vector3(10, 3, 1)
+stretch = Vector3(5, 3, 1)
 
 [node name="Wall2" parent="House/Room" unique_id=605265041 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8457327, 0, -12)
