@@ -52,6 +52,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Roof" type="StaticBody3D" parent="House" unique_id=478206662]
+visible = false
 collision_mask = 0
 metadata/_edit_lock_ = true
 
@@ -68,21 +69,25 @@ shape = SubResource("BoxShape3D_oc4kc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
 override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
+metadata/_edit_lock_ = true
 
 [node name="Outer2" parent="House" unique_id=966705309 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, 12)
 override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
+metadata/_edit_lock_ = true
 
 [node name="Outer3" parent="House" unique_id=299436808 instance=ExtResource("2_6iamk")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 12, 0, -12)
 override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
+metadata/_edit_lock_ = true
 
 [node name="Outer4" parent="House" unique_id=1952063876 instance=ExtResource("2_6iamk")]
 transform = Transform3D(1.9470718e-07, 0, -1, 0, 1, 0, 1, 0, 1.9470718e-07, -12, 0, -12)
 override_materials = Array[StandardMaterial3D]([null, null, ExtResource("4_oc4kc")])
 stretch = Vector3(24, 3, 1)
+metadata/_edit_lock_ = true
 
 [node name="Lights" type="Node3D" parent="House" unique_id=465538500]
 metadata/_edit_lock_ = true

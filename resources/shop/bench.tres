@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://bhejpv4vq872t"]
+
+[ext_resource type="Script" uid="uid://s0g47x1qxm77" path="res://scenes/ui/shop/shop_item.gd" id="1_jrbff"]
+[ext_resource type="PackedScene" uid="uid://bbtymts7af7as" path="res://scenes/props/buildables/furniture/bench.tscn" id="1_y0d6j"]
+
+[resource]
+script = ExtResource("1_jrbff")
+id = &"bench"
+display_name = "Bench"
+scene = ExtResource("1_y0d6j")
+metadata/_custom_type_script = "uid://s0g47x1qxm77"
